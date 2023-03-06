@@ -1,0 +1,57 @@
+﻿@model IEnumerable<eCustomersWebApp.Models.CustomerOpenHours>
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Customer Details of </h2>
+
+<p> <span style="font-weight:bold;"> Name: </span> @ViewBag.CustomerData.CustomerName </p>
+<p> <span style="font-weight:bold;"> Address: </span> @ViewBag.CustomerData.Address</p>
+<p> <span style="font-weight:bold;"> Phone: </span> @ViewBag.CustomerData.Phone</p>
+<p>
+    @Html.ActionLink("Add New Open Hours", "Create", new { id =  @ViewBag.CustomerData.CustomerID })
+</p>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerHoursId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OpenHoursStart)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OpenHoursEnd)
+            </th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerHoursId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OpenHoursStart)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OpenHoursEnd)
+            </td>            
+            <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.CustomerId , id2 = item.CustomerHoursId}) |
+                    @Html.ActionLink("Delete", "Delete", new {  id = item.CustomerId , id2 = item.CustomerHoursId })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

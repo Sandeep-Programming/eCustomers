@@ -1,0 +1,19 @@
+CREATE TABLE [dbo].[customers](
+	[customerId] [int] NOT NULL PRIMARY KEY,
+	[name] [nvarchar](50),
+	[address] [nvarchar](100) NULL,
+	[phone] [nchar](10) NULL
+) ON [PRIMARY]
+GO
+
+
+
+CREATE TABLE [dbo].[customeropenhours](
+	[customerid] [int] NOT NULL FOREIGN KEY REFERENCES customers (customerid) ,
+	[customerhoursid] [int] NOT NULL PRIMARY KEY,
+	[openhoursstart] [datetime] NOT NULL,
+	[openhoursend] [datetime] NOT NULL
+) ON [PRIMARY]
+GO
+
+
